@@ -32,6 +32,7 @@ pub struct Stream {
     /// User private data.
     ///
     /// This data cannot be cloned.
+    #[cfg_attr(feature = "serde", serde(skip))]
     pub user_private: Option<Arc<dyn Any + Send + Sync>>,
 }
 
@@ -55,7 +56,7 @@ impl Stream {
 }
 
 /// Group of streams.
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct StreamGroup<'a> {
     /// Stream group ID.
