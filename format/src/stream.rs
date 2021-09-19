@@ -5,6 +5,8 @@ use std::sync::Arc;
 
 /// Stream data.
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct Stream {
     /// Format-specific track identifier.
     ///
@@ -53,6 +55,8 @@ impl Stream {
 }
 
 /// Group of streams.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct StreamGroup<'a> {
     /// Stream group ID.
     ///

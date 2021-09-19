@@ -11,12 +11,7 @@ edition = "2018"
 nightly = []
 
 [workspace]
-members = [
-    "bitstream",
-    "codec",
-    "data",
-    "format",
-]
+members = ["bitstream", "codec", "data", "format"]
 
 [dependencies.av-data]
 version = "0.3.0"
@@ -33,3 +28,8 @@ path = "bitstream"
 [dependencies.av-codec]
 version = "0.2.0"
 path = "codec"
+
+[dependencies.serde]
+version = "1"
+optional = true
+features = ["derive"]
