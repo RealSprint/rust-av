@@ -4,6 +4,8 @@ use std::sync::Arc;
 
 /// Video stream information.
 #[derive(Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct VideoInfo {
     /// Picture width.
     pub width: usize,
@@ -15,6 +17,8 @@ pub struct VideoInfo {
 
 /// Audio stream information.
 #[derive(Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct AudioInfo {
     /// Audio sample rate.
     pub rate: usize,
@@ -26,6 +30,8 @@ pub struct AudioInfo {
 
 /// Possible stream information types.
 #[derive(Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub enum MediaKind {
     /// Video codec information.
     Video(VideoInfo),
@@ -35,6 +41,9 @@ pub enum MediaKind {
 
 /// Possible codec parameters.
 #[derive(Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+
 pub struct CodecParams {
     /// Stream information type.
     pub kind: Option<MediaKind>,

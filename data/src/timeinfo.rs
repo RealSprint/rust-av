@@ -4,6 +4,8 @@ use std::sync::Arc;
 
 /// Timestamp information for frames and packets.
 #[derive(Debug, Clone, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct TimeInfo {
     /// Presentation timestamp.
     pub pts: Option<i64>,
@@ -17,5 +19,7 @@ pub struct TimeInfo {
     /// computed and defined at stream level.
     pub timebase: Option<Rational64>,
     /// Timebase user private data.
+
+    #[cfg_attr(feature = "serde", serde(skip))]
     pub user_private: Option<Arc<dyn Any + Send + Sync>>,
 }

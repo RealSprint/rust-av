@@ -6,6 +6,8 @@ use std::sync::Arc;
 
 /// Accepted option values.
 #[derive(Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub enum Value<'a> {
     /// Signed integer value.
     I64(i64),

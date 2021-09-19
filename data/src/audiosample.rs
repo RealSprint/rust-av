@@ -3,6 +3,8 @@ use std::string::*;
 
 /// Audio format definition.
 #[derive(Debug, Copy, Clone, PartialEq)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct Soniton {
     /// Bits per sample.
     pub bits: u8,
@@ -79,6 +81,8 @@ impl fmt::Display for Soniton {
 /// Known audio channel types.
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[allow(clippy::upper_case_acronyms)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub enum ChannelType {
     C,
     L,
@@ -199,6 +203,8 @@ impl fmt::Display for ChannelType {
 
 /// An ordered sequence of channels.
 #[derive(Clone, Debug, PartialEq, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
 pub struct ChannelMap {
     ids: Vec<ChannelType>,
 }
