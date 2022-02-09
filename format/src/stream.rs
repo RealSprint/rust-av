@@ -1,3 +1,5 @@
+use ts_rs::TS;
+
 use crate::data::params::CodecParams;
 use crate::rational::Rational64;
 use std::any::Any;
@@ -7,6 +9,8 @@ use std::sync::Arc;
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct Stream {
     /// Format-specific track identifier.
     ///
@@ -28,11 +32,13 @@ pub struct Stream {
     /// If `None`, stream duration is not considered.
     pub duration: Option<u64>,
     /// Timebase numerator/denominator.
+    #[ts(type = "[number, number]")]
     pub timebase: Rational64,
     /// User private data.
     ///
     /// This data cannot be cloned.
     #[cfg_attr(feature = "serde", serde(skip))]
+    #[ts(skip)]
     pub user_private: Option<Arc<dyn Any + Send + Sync>>,
 }
 

@@ -9,6 +9,7 @@
 use num_derive::{FromPrimitive, ToPrimitive};
 pub use num_traits::cast::ToPrimitive;
 pub use num_traits::FromPrimitive;
+use ts_rs::TS;
 use std::fmt;
 use std::ops::Index;
 use std::slice;
@@ -18,6 +19,8 @@ use std::slice;
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum YUVRange {
     /// Pixels in the range [16, 235].
     Limited,
@@ -39,6 +42,8 @@ impl fmt::Display for YUVRange {
 #[derive(Debug, Clone, Copy, PartialEq, FromPrimitive, ToPrimitive)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum MatrixCoefficients {
     Identity = 0,
     BT709 = 1,
@@ -92,6 +97,8 @@ impl fmt::Display for MatrixCoefficients {
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum ColorPrimaries {
     Reserved0 = 0,
     BT709 = 1,
@@ -135,6 +142,8 @@ impl fmt::Display for ColorPrimaries {
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum TransferCharacteristic {
     Reserved0 = 0,
     BT1886 = 1,
@@ -187,6 +196,8 @@ impl fmt::Display for TransferCharacteristic {
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum ChromaLocation {
     Unspecified = 0,
     Left,
@@ -217,6 +228,8 @@ impl fmt::Display for ChromaLocation {
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum YUVSystem {
     YCbCr(YUVRange),
     YCoCg,
@@ -239,6 +252,8 @@ impl fmt::Display for YUVSystem {
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum TrichromaticEncodingSystem {
     RGB,
     YUV(YUVSystem),
@@ -261,6 +276,8 @@ impl fmt::Display for TrichromaticEncodingSystem {
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum ColorModel {
     Trichromatic(TrichromaticEncodingSystem),
     CMYK,
@@ -296,6 +313,8 @@ impl ColorModel {
 #[derive(Clone, Copy, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct Chromaton {
     /// Horizontal subsampling in power of two
     /// (e.g. `0` = no subsampling, `1` = only every second value is stored).
@@ -439,6 +458,8 @@ impl fmt::Display for Chromaton {
 #[derive(Clone, Copy, PartialEq, Debug)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct Formaton {
     /// Image color model.
     pub model: ColorModel,

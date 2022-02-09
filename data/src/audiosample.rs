@@ -1,10 +1,14 @@
 use std::fmt;
 use std::string::*;
 
+use ts_rs::TS;
+
 /// Audio format definition.
 #[derive(Debug, Copy, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct Soniton {
     /// Bits per sample.
     pub bits: u8,
@@ -83,6 +87,8 @@ impl fmt::Display for Soniton {
 #[allow(clippy::upper_case_acronyms)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum ChannelType {
     C,
     L,
@@ -205,6 +211,8 @@ impl fmt::Display for ChannelType {
 #[derive(Clone, Debug, PartialEq, Default)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct ChannelMap {
     ids: Vec<ChannelType>,
 }

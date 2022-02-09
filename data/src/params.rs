@@ -1,3 +1,5 @@
+use ts_rs::TS;
+
 use crate::audiosample::{ChannelMap, Soniton};
 use crate::pixel::Formaton;
 use std::sync::Arc;
@@ -6,6 +8,8 @@ use std::sync::Arc;
 #[derive(Clone, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct VideoInfo {
     /// Picture width.
     pub width: usize,
@@ -19,6 +23,8 @@ pub struct VideoInfo {
 #[derive(Clone, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub struct AudioInfo {
     /// Audio sample rate.
     pub rate: usize,
@@ -32,6 +38,8 @@ pub struct AudioInfo {
 #[derive(Clone, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
+#[derive(TS)]
+#[ts(export)]
 pub enum MediaKind {
     /// Video codec information.
     Video(VideoInfo),
@@ -43,7 +51,8 @@ pub enum MediaKind {
 #[derive(Clone, Debug, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "snake_case"))]
-
+#[derive(TS)]
+#[ts(export)]
 pub struct CodecParams {
     /// Stream information type.
     pub kind: Option<MediaKind>,

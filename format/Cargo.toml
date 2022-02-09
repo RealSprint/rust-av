@@ -11,6 +11,7 @@ repository = "https://github.com/rust-av/rust-av"
 log = "0.4.6"
 thiserror = "1.0"
 av-data = { path = "../data", features = ["serde"] }
+ts-rs = "6.1"
 
 [dependencies.serde]
 version = "1"
